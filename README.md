@@ -1,4 +1,4 @@
-# OnlineBookStore
+# Online Book Store
 
 Project application built with: HTML(Page layout and design), CSS(Design), JS(Fontend), jQuery, PHP(Backend), and MySQL(Database).
 
@@ -7,7 +7,7 @@ Project application built with: HTML(Page layout and design), CSS(Design), JS(Fo
 - You will need to import the database listed below in order for project to work ammicably.
 - You can find an export of the database used in the project: **bookstore.sql**
 
-## WhatIsTheProjectAbout?
+## What Is The Project About?
 
 This is an Online Book Store Inspired by the millions of booklovers around the globe!
 
@@ -25,6 +25,6 @@ How to use Forever Books Wesbsite: **Follow these steps:**
 - [x] And now you are officially done!
 
 
-# HappyPerusing!
+# Happy Perusing!
 
  
