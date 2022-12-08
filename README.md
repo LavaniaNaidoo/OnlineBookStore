@@ -7,7 +7,7 @@ Project application built with: HTML(Page layout and design), CSS(Design), JS(Fo
 - You will need to import the database listed below in order for project to work ammicably.
 - Open up your PhpMyAdmin, create the table **"u385439067_store"** in your database.
 - You can find an export of the database used in the project: **bookstore.sql**.
-- Once table has been created in your database, **import the bokstore.sql into your PhpMyAdmin** and the project will now be able to work!
+- Once table has been created in your database, **import the bookstore.sql into your PhpMyAdmin** and the project will now be able to work!
 
 
 ## What Is The Project About?
