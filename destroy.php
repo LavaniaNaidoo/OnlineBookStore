@@ -1,3 +1,5 @@
+<!-- Added function to successfully logout -->
+
 <?php
 session_start();
 unset($_SESSION['user']);

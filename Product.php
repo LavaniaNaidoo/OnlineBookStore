@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['user']))
-       header("location: index.php?Message=Please login To Continue!");
+       header("location: index.php?Message=Please login To Continue!"); //Window dialog that indicates that you have to login first to use site
 ?>
 
 <!DOCTYPE html>
@@ -14,10 +14,12 @@ if(!isset($_SESSION['user']))
     <meta name="description" content="Books">
     <meta name="author" content="Lavania Naidoo">
     <title> Categories </title>
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/my.css" rel="stylesheet">
 
+    <!-- Styles and media queries to make site responsive -->
     <style>
    
     #books {margin-bottom:50px;}
@@ -30,6 +32,7 @@ if(!isset($_SESSION['user']))
 </head>
 <body>
 
+<!-- Navbar -->
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
       <div class="container-fluid" style="background:#002244;">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -60,6 +63,7 @@ if(!isset($_SESSION['user']))
       </div><!-- /.container-fluid -->
     </nav>
 
+    <!-- Search bar -->
     <div id="top" >
         <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;background:#002244;">
             <div>
@@ -70,12 +74,12 @@ if(!isset($_SESSION['user']))
         </div>
 
     <?php
-    include "dbconnect.php";
+    include "dbconnect.php"; //Connects database
     if(isset($_GET['value']))
         {  
            $_SESSION['category']=$_GET['value'];
         }
-    $category=$_SESSION['category'];
+    $category=$_SESSION['category']; //Sorts categories, prices and discounts
     if(isset($_POST['sort']))
     {
         if($_POST['sort']=="price")
@@ -133,7 +137,7 @@ if(!isset($_SESSION['user']))
 
         if(mysqli_num_rows($result) > 0) 
         {   
-            while($row = mysqli_fetch_assoc($result)) 
+            while($row = mysqli_fetch_assoc($result)) //Shows detailed description of Books prices, image etc.
             {
             $path="img/books/" .$row['PID'].".jpg";
             $description="description.php?ID=".$row["PID"];
@@ -172,10 +176,12 @@ if(!isset($_SESSION['user']))
 <!--	
 <script>
 $('#my_select').change(function() {   
-   // assign the value to a variable, so you can test to see if it is working
+   // Assigned the value to a variable, so I could test to see if it is working
     var selectVal = $('#my_select :selected').val();
     alert(selectVal);
 });
 </script>
 
 -->
+
+<!-- End of page -->

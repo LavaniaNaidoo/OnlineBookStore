@@ -8,9 +8,12 @@
     <meta name="description" content="Books">
     <meta name="author" content="Lavania Naidoo">
     <title> About Us </title>
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/my.css" rel="stylesheet">
+
+    <!-- Had to pull in individual styles for page -->
     <style>
         body{
             padding-top: 10px;
@@ -29,12 +32,14 @@
         #card-text{
             font-size: 50px;
         }
+        /* Media queries to make site responsive */
   	@media(max-width:767px){
         #query_button {padding: 5px 20px;}
   	}
     </style>
 </head>
 <body>
+  <!-- Navbar -->
   <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
       <div class="container-fluid" style="background:#002244;">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -116,3 +121,4 @@
     </h4>
   </div>
 </div>
+<!-- End of page -->

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['user']))
-       header("location: index.php?Message=Please login To Continue!");
+       header("location: index.php?Message=Please login To Continue!"); //Window dialog that indicates to login first to continue
 ?>
 
 
@@ -12,8 +12,9 @@ if(!isset($_SESSION['user']))
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="css/my.css" type="text/css">
-<title> Look Books </title>
+<title> Look Book </title>
 <body>
+    <!-- Styles and Media queries to make site responsive -->
 <style>
 
         #books .row{margin-top:30px;font-weight:800;}
@@ -23,6 +24,7 @@ if(!isset($_SESSION['user']))
 
 </head>
 
+<!-- Navbar -->
 <body>
   <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
     <div class="container-fluid" style="background:#002244;">
@@ -41,7 +43,7 @@ if(!isset($_SESSION['user']))
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
             <?php
-            if(!isset($_SESSION['user']))
+            if(!isset($_SESSION['user'])) //User login and registration forms
               {
                 echo'
                 <li>
@@ -138,6 +140,8 @@ if(!isset($_SESSION['user']))
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+
+  <!-- Search Bar -->
   <div id="top" >
       <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;background:#002244;">
           <div>
@@ -147,8 +151,8 @@ if(!isset($_SESSION['user']))
           </div>
       </div>
 <?php
-include "dbconnect.php";
-$keyword=$_POST['keyword'];
+include "dbconnect.php"; //Connects to database
+$keyword=$_POST['keyword']; //Displays all books available in store
 
 $query="select * from products  where PID like '%{$keyword}%' OR Title like '%{$keyword}%' OR Author like '%{$keyword}%' OR Publisher like '%{$keyword}%' OR Category like '%{$keyword}%'";
 $result=mysqli_query($con,$query) or die(mysqli_error($con));;
@@ -195,3 +199,5 @@ $result=mysqli_query($con,$query) or die(mysqli_error($con));;
 
 </body>
 </html>		
+
+<!-- End of page -->

@@ -1,13 +1,13 @@
 <?php
 	session_start();
   if(!isset($_SESSION['user']))
-       header("location: index.php?Message=Please login to continue!");
+       header("location: index.php?Message=Please login to continue!"); //Window dialog that indicates you have to login to continue
 	include "dbconnect.php";
          $customer=$_SESSION['user'];
 ?>
 <?php
 
-        if(isset($_GET['place']))
+        if(isset($_GET['place'])) //When order is placed successfully, this window dialog will appear
                  {  
                     $query="DELETE FROM cart where Customer='$customer'";
                     $result=mysqli_query($con,$query);
@@ -18,7 +18,7 @@
                  <?php                  
                   }
         if(isset($_GET['remove']))
-                 {  $product=$_GET['remove'];
+                 {  $product=$_GET['remove']; //When you want to remove an item from your cart, this dialog box will appear
                     $query="DELETE FROM cart where Customer='$customer' AND Product='$product'";
                     $result=mysqli_query($con,$query);
                  ?>
@@ -39,10 +39,12 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <meta name="author" content="Lavania Naidoo">
     <title> Cart </title>
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/my.css" rel="stylesheet">
     <style>
+        /* Styles and Media Queries  */
         #cart {margin-top:30px;margin-bottom:30px;}
         .panel {border:1px solid #002244;padding-left:0px;padding-right:0px;}
         .panel-heading {background:#002244 !important;color:white !important;}        
@@ -51,6 +53,7 @@
 
 </head>
 <body>
+    <!-- Navbar -->
   <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
     <div class="container-fluid" style="background:#002244;">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -69,7 +72,7 @@
         <ul class="nav navbar-nav navbar-right">
 	        <?php
 	        if(!isset($_SESSION['user']))
-	          {
+	          { //Login and register modal 
 	            echo'
 	            <li>
 	                <button type="button" id="login_button" class="btn btn-lg" data-toggle="modal" data-target="#login"> Login </button>
@@ -165,6 +168,8 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+
+  <!-- Search bar -->
   <div id="top" >
       <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;background:#002244;">
           <div>
@@ -177,6 +182,7 @@
 
 	<?php
 
+// Cart
 echo '<div class="container-fluid" id="cart">
       <div class="row">
           <div class="col-xs-12 text-center" id="heading">
@@ -189,7 +195,7 @@ echo '<div class="container-fluid" id="cart">
 	            {   
                         $product=$_GET['ID'];
                         $quantity=$_GET['quantity'];
-                        $query="SELECT * from cart where Customer='$customer' AND Product='$product'";
+                        $query="SELECT * from cart where Customer='$customer' AND Product='$product'"; //Gets the id and quantity from user in order to place purchase
                         $result=mysqli_query($con,$query);
                         $row = mysqli_fetch_assoc($result);
                         if(mysqli_num_rows($result)==0)
@@ -209,7 +215,7 @@ echo '<div class="container-fluid" id="cart">
                 if(mysqli_num_rows($result)>0)
                 {    $i=1;
                      $j=0;
-                     while($row = mysqli_fetch_assoc($result))
+                     while($row = mysqli_fetch_assoc($result)) //Displays information on desired purchase 
                      {       $path = "img/books/".$row['PID'].".jpg";
                              $Stotal = $row['Quantity'] * $row['Price'];
                              if($i % 2 == 1)  $offset= 1;
@@ -241,7 +247,7 @@ echo '<div class="container-fluid" id="cart">
                                $i++;
                                $j++;                                                 
                      } 
-                    
+                    //Displays the total of all purchases
                     echo '<div class="container">
                               <div class="row">  
                                  <div class="panel col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 text-center" style="color:#000000;font-weight:800;">
@@ -264,7 +270,7 @@ echo '<div class="container-fluid" id="cart">
                            </div>
                            ';
                 } 
-               else
+               else //Function if purchase has been made and user would like to return to shop
                      {  
                         echo ' 
                          <div class="row">
@@ -293,3 +299,4 @@ echo '<div class="container-fluid" id="cart">
   <script src="js/bootstrap.min.js"></script>
 </body>
 <html>		
+    <!-- End of page -->

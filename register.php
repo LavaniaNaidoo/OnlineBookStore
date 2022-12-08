@@ -1,3 +1,5 @@
+<!-- Registration forms to indicate if successful or credentials are taken -->
+
 <?php
 
 include "dbconnect.php";

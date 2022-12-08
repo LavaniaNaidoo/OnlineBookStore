@@ -1,8 +1,8 @@
 <?php
-session_start();
+session_start(); //Connects Database
 include "dbconnect.php";
 
-if (isset($_GET['Message'])) {
+if (isset($_GET['Message'])) { //Alert message
     print '<script type="text/javascript">
                alert("' . $_GET['Message'] . '");
            </script>';
@@ -14,7 +14,7 @@ if (isset($_GET['response'])) {
            </script>';
 }
 
-if(isset($_POST['submit']))
+if(isset($_POST['submit'])) //User login form
 {
   if($_POST['submit']=="login")
   { 
@@ -25,7 +25,7 @@ if(isset($_POST['submit']))
         if(mysqli_num_rows($result) > 0)
         {
              $row = mysqli_fetch_assoc($result);
-             $_SESSION['user']=$row['UserName'];
+             $_SESSION['user']=$row['UserName'];//Dialog alert box that confirms sign in or user credentials that is wrong
              print'
                 <script type="text/javascript"> alert("Successfully logged in!");</script>
                   ';
@@ -36,7 +36,7 @@ if(isset($_POST['submit']))
                   ';
         }
   }
-  else if($_POST['submit']=="register")
+  else if($_POST['submit']=="register") //User registration forms
   {
         $username=$_POST['register_username'];
         $password=$_POST['register_password'];
@@ -74,10 +74,12 @@ if(isset($_POST['submit']))
     <meta name="description" content="Books">
     <meta name="author" content="Lavania Naidoo">
     <title> Forever Books </title>
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/my.css" rel="stylesheet">
     <style>
+        /* Styles and Media queries */
       .modal-header {background:#000000;color:#fff;font-weight:800;}
       .modal-body{font-weight:800;}
       .modal-body ul{list-style:none;}
@@ -98,6 +100,8 @@ if(isset($_POST['submit']))
     </style>
 </head>
 <body>
+
+    <!-- Navbar -->
   <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
       <div class="container-fluid" style="background:#002244;">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -117,7 +121,7 @@ if(isset($_POST['submit']))
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
          <ul class="nav navbar-nav navbar-right">
         <?php
-        if(!isset($_SESSION['user']))
+        if(!isset($_SESSION['user'])) //User login and registration
           {
             echo'
             <li>
@@ -199,7 +203,9 @@ if(isset($_POST['submit']))
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-  <div id="top" > <!-- Search bar -->
+
+    <!-- Search bar -->
+  <div id="top" > 
       <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;background:#002244;">
           <div>
               <form role="search" method="POST" action="Result.php">
@@ -332,6 +338,7 @@ if(isset($_POST['submit']))
       </div>
   </div>
 
+  <!-- Esteemed Authors -->
   <div class="container-fluid" id="author">
       <h3 style="color:#002244;"> Popular Authors </h3>
       <div class="row">
@@ -364,6 +371,7 @@ if(isset($_POST['submit']))
       </div>
   </div>
 
+  <!-- Contact us Information -->
   <footer style="margin-left:-6%;margin-right:-6%;background:#002244;">
       <div class="container-fluid">
           <div class="row">
@@ -419,7 +427,7 @@ if(isset($_POST['submit']))
 <div class="container">
   <!-- Trigger the modal with a button -->
   <button type="button" id="query_button" class="btn btn-lg" data-toggle="modal" data-target="#query" style="background:#002244;"> Ask query </button>
-  <!-- Modal -->
+  <!-- Query modal -->
   <div class="modal fade" id="query" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -462,3 +470,4 @@ if(isset($_POST['submit']))
   <script src="js/bootstrap.min.js"></script>
 </body>
 </html>	
+<!-- End of page -->

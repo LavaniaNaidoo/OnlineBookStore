@@ -1,3 +1,5 @@
+<!-- Database configuration/connection -->
+
 <?php 
 define('DB_HOST', 'localhost'); 
 define('DB_NAME', 'u385439067_store'); 

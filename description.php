@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['user']))
-       header("location: index.php?Message=Please login To continue!");
+       header("location: index.php?Message=Please login To continue!"); //Window dialog that states you have to login to continue
 ?>
 
 <!DOCTYPE html>
@@ -14,11 +14,13 @@ if(!isset($_SESSION['user']))
     <meta name="description" content="Books">
     <meta name="author" content="Lavania Naidoo">
     <title> Description </title>
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/my.css" rel="stylesheet">
 
     <style>  
+    /* Styles and Media Queries to make Site responsive */
         @media only screen and (width: 768px) { body{margin-top:150px;}}
         @media only screen and (max-width: 760px) { #books .row{margin-top:10px;}}
         .tag {display:inline;float:left;padding:2px 5px;width:auto;background:#F5A623;color:#fff;height:23px;}
@@ -32,6 +34,7 @@ if(!isset($_SESSION['user']))
 
 </head>
 <body>
+  <!-- Navbar -->
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
       <div class="container-fluid" style="background:#002244;">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -62,6 +65,7 @@ if(!isset($_SESSION['user']))
       </div><!-- /.container-fluid -->
     </nav>
 
+    <!-- Search bar -->
     <div id="top" >
         <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;background:#002244;">
             <div>
@@ -74,14 +78,14 @@ if(!isset($_SESSION['user']))
 
 
     <?php
-    include "dbconnect.php";
+    include "dbconnect.php"; //Connects database
     $PID=$_GET['ID'];
     $query = "SELECT * FROM products WHERE PID='$PID'";
     $result = mysqli_query ($con,$query)or die(mysql_error());
 
         if(mysqli_num_rows($result) > 0) 
         {   
-            while($row = mysqli_fetch_assoc($result)) 
+            while($row = mysqli_fetch_assoc($result)) //Shows discounted books and books that are on sale to purchase
             {
             $path="img/books/".$row['PID'].".jpg";
             $target="cart.php?ID=".$PID."&";
@@ -143,7 +147,7 @@ echo '
     ?>
 
 
-
+<!-- Footer to insure 24/hr care to customers -->
 <div class="container-fluid" id="service">
       <div class="row">
           <div class="col-sm-6 col-md-3 text-center">
@@ -177,7 +181,7 @@ echo '
     <script src="js/bootstrap.min.js"></script>
 <script>
             $(function () {
-                var link = $('#buyLink').attr('href');
+                var link = $('#buyLink').attr('href'); //Function to buy desired book
                 $('#buyLink').attr('href', link + 'quantity=' + $('#quantity option:selected').val());
                 $('#quantity').on('change', function () {
                     $('#buyLink').attr('href', link + 'quantity=' + $('#quantity option:selected').val());
@@ -186,3 +190,4 @@ echo '
     </script>
 </body>
 </html>       
+<!-- End of page -->

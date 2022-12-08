@@ -1,3 +1,5 @@
+<!-- User login successful or incorrect credentials -->
+
 <?php
 include "dbconnect.php";
 

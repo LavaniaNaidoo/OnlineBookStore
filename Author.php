@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['user']))
-       header("location: index.php?Message=Please Login To Continue!");
+       header("location: index.php?Message=Please Login To Continue!"); // Window dialog that alerts you have to login to continue
 ?>
 
 <!DOCTYPE html>
@@ -14,10 +14,12 @@ if(!isset($_SESSION['user']))
     <meta name="description" content="Books">
     <meta name="author" content="Lavania Naidoo">
     <title> Author </title>
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/my.css" rel="stylesheet">
     <style>
+        /* Styles and Media Queries to make site presentable and Responsive */
         #books {margin-bottom: 50px;}
         @media only screen and (width: 768px) { body{margin-top:150px;}}
         #books .row{margin-top:30px;margin-bottom:30px;font-weight:800;}
@@ -26,12 +28,13 @@ if(!isset($_SESSION['user']))
 </head>
 <body>
 
+<!-- Navbar -->
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
       <div class="container-fluid" style="background:#002244;">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
+            <span class="sr-only"> Toggle navigation </span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -56,7 +59,7 @@ if(!isset($_SESSION['user']))
       </div><!-- /.container-fluid -->
     </nav>
 
-
+<!-- Search Bar -->
     <div id="top" >
         <div id="searchbox" class="container-fluid" style="width:112%;margin-left:-6%;margin-right:-6%;background:#002244;">
             <div>
@@ -67,12 +70,12 @@ if(!isset($_SESSION['user']))
         </div>
 
     <?php
-    include "dbconnect.php";
+    include "dbconnect.php"; //Connects to database
         if(isset($_GET['value']))
         {  
            $_SESSION['author']=$_GET['value'];
         }
-    $author=$_SESSION['author'];
+    $author=$_SESSION['author']; //Sorts the author and price for books
     if(isset($_POST['sort']))
     {
         if($_POST['sort']=="price")
@@ -98,8 +101,8 @@ if(!isset($_SESSION['user']))
     else   
                   $query = "SELECT * FROM products WHERE Author='$author'";
                   $result = mysqli_query ($con,$query)or die(mysql_error());
-    $i=0;
-    echo '<div class="container-fluid" id="books">
+    $i=0; //Container for Sorting prices from different varies
+    echo '<div class="container-fluid" id="books"> 
         <div class="row">
           <div class="col-xs-12 text-center" id="heading">
                  <h2 style="color:#000000;text-transform:uppercase;margin-bottom:0px;"> '. $author .' STORE : </h2>
@@ -124,7 +127,7 @@ if(!isset($_SESSION['user']))
 
         if(mysqli_num_rows($result) > 0) 
         {   
-            while($row = mysqli_fetch_assoc($result)) 
+            while($row = mysqli_fetch_assoc($result)) //Fetches previous result
             {
             $path="img/books/" .$row['PID'].".jpg";
             $description="description.php?ID=".$row["PID"];
@@ -160,3 +163,4 @@ if(!isset($_SESSION['user']))
     <script src="js/bootstrap.min.js"></script>
 </body>
 </html>		
+<!-- End of page -->

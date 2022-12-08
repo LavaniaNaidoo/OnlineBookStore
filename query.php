@@ -1,3 +1,5 @@
+<!-- Personalised query that actually sends an email to me(the author of project) -->
+
 <?php
 if($_POST["submit"]=="query") 
 {
