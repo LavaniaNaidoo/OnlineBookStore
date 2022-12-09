@@ -2,6 +2,8 @@
 
 Project application built with: HTML(Page layout and design), CSS(Design), JS(Fontend), jQuery, PHP(Backend), and MySQL(Database).
 
+## Please find the Demo of this project at the end of readme and in the folder "demo"!
+
 ## Databases:
 
 - You will need to import the database listed below in order for project to work ammicably.
@@ -30,4 +32,4 @@ How to use Forever Books Wesbsite: **Follow these steps:**
 
 # Happy Perusing!
 
- 
+
