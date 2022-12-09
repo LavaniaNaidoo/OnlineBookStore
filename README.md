@@ -2,7 +2,7 @@
 
 Project application built with: HTML(Page layout and design), CSS(Design), JS(Fontend), jQuery, PHP(Backend), and MySQL(Database).
 
-## Please find the Demo of this project at the end of readme and in the folder "demo"!
+## Please find the Demo of this project in the folder "demo"!
 
 ## Databases:
 
